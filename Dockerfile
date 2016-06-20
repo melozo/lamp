@@ -17,6 +17,7 @@ ADD supervisord-apache2.conf /etc/supervisor/conf.d/supervisord-apache2.conf
 ADD supervisord-mysqld.conf /etc/supervisor/conf.d/supervisord-mysqld.conf
 
 # Remove pre-installed database
+
 RUN rm -rf /var/lib/mysql/*
 
 # Add MySQL utils
@@ -35,7 +36,7 @@ RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
 ENV PHP_POST_MAX_SIZE 10M
 
-# Add volumes for MySQL 
+# Add volumes for MySQL
 VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
 
 EXPOSE 80 3306
